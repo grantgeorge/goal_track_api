@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   namespace :v1, defaults: { format: :json } do
     resource :login, only: [:create], controller: :sessions
+    resources :users, only: [:create]
+    resources :stories, only: [:index, :show, :create]
 
     resources :goals, except: [:new, :edit]
   end
