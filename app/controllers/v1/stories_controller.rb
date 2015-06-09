@@ -6,12 +6,12 @@ module V1
     # Get all the stories
     def index
       @stories = Story.includes(:user).order(created_at: :desc).all
-      render json: @stories, each_serializer: StoriesSerializer
+      render json: @stories, each_serializer: V1::StoriesSerializer
     end
 
     def show
       @story = Story.find(params[:id])
-      render json: @story, serializer: StorySerializer
+      render json: @story, serializer: V1::StorySerializer
     end
 
     # POST /v1/stories
@@ -20,7 +20,7 @@ module V1
       @story = Story.new(story_params)
 
       if @story.save
-        render json: @story, serializer: StorySerializer
+        render json: @story, serializer: V1::StorySerializer
       else
         render json: { error: 'story_create_error' }, status: :unprocessable_entity
       end

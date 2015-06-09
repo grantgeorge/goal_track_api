@@ -4,7 +4,6 @@ require 'faker'
   User.create(email: Faker::Internet.email, username: Faker::Internet.user_name, password: 'password')
 end
 
-User.create!({:email => "test@test.com",
-  :password => "testtest",
-  :password_confirmation => "testtest",
-  :username => "test" })
+10.times do
+  Story.create(title: Faker::Name.title, body: Faker::Lorem.paragraph(30 + rand(70)), user: User.all.sample)
+end
