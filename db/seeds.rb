@@ -1,5 +1,3 @@
-require 'faker'
-
 def rand_int(from, to)
   rand_in_range(from, to).to_i
 end
