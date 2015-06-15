@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.1'
 
 gem 'rails', '4.2.0'
 gem 'rails-api', '0.4.0'
@@ -24,5 +25,3 @@ group :production, :staging do
   gem 'rails_12factor', '0.0.3'
   gem 'rails_stdout_logging', '0.0.3'
 end
-
-ruby '2.2.1'
