@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Logging with foreman http://stackoverflow.com/questions/8717198/foreman-only-shows-line-with-started-wit-pid-and-nothing-else
+  # https://github.com/ddollar/foreman/wiki/Missing-Output
+  # $stdout.sync = true
 end

@@ -1,8 +1,7 @@
 module V1
-  class RemindersSerializer < ActiveModel::Serializer
+  class ReminderSerializer < ActiveModel::Serializer
 
-    attributes :name, :description, :created_at, :id, :goal_id
-    has_one :goal, serializer: V1::GoalSerializer
+    attributes :id, :goal_id, :name, :description, :created_at
 
   end
 end

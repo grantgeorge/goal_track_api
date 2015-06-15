@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :stories, only: [:index, :show, :create]
 
     resources :goals, except: [:new, :edit]
+    resources :reminders, except: [:new, :edit]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

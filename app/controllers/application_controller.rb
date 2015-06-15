@@ -18,6 +18,11 @@ class ApplicationController < ActionController::API
     end
   end
 
+  # Don't use root
+  def default_serializer_options
+    {root: false}
+  end
+
   private
 
   def authenticate_with_auth_token auth_token
