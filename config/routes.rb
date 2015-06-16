@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resources :goals, except: [:new, :edit]
     resources :reminders, except: [:new, :edit]
+    resources :completions, except: [:new, :edit]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
