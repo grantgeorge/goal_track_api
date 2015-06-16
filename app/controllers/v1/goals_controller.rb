@@ -5,7 +5,7 @@ module V1
     # GET /goals
     # GET /goals.json
     def index
-      @goals = Goal.all
+      @goals = Goal.where user_id: current_user.id
 
       render json: @goals, each_serializer: V1::GoalsSerializer
     end
@@ -21,8 +21,10 @@ module V1
     def create
       @goal = Goal.new(goal_params)
 
+      @goal.user_id = current_user.id
+
       if @goal.save
-        render json: @goal, status: :created, location: @goal, serializer: V1::GoalSerializer
+        render json: @goal, status: :created, serializer: V1::GoalSerializer
       else
         render json: @goal.errors, status: :unprocessable_entity
       end

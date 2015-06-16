@@ -36,3 +36,8 @@ end
     goal: Goal.all.sample)
 end
 
+10.times do
+  Completion.create(
+    completed: true,
+    goal: Goal.all.sample)
+end

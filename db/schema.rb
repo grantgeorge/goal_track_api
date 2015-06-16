@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609140016) do
+ActiveRecord::Schema.define(version: 20150615231345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "completions", force: :cascade do |t|
+    t.boolean  "completed"
+    t.integer  "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "completions", ["goal_id"], name: "index_completions_on_goal_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150609140016) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.string   "type_of"
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
@@ -68,5 +78,6 @@ ActiveRecord::Schema.define(version: 20150609140016) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "completions", "goals"
   add_foreign_key "goals", "users"
 end
